@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESTORIA JURIDICA- ADMINISTRATIVA</title>
+    <style>
+        :root {
+            --primary: #1a3a5a;
+            --secondary: #2c5d8f;
+            --accent: #d4af37;
+            --light: #f4f7f6;
+            --dark: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .category-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .category-btn.active {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .submenu {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .submenu h2 {
+            color: var(--primary);
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            margin-top: 0;
+        }
+
+        .list-tramites {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .list-tramites li {
+            padding: 12px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .list-tramites li:hover {
+            background: #eef2f7;
+            border-color: var(--secondary);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GESTORIA JURIDICA- ADMINISTRATIVA</h1>
+        <p>Soluciones integrales para tus trámites</p>
+    </header>
+
+    <div class="menu-container">
+        <button class="category-btn" onclick="showTramites('anses')">ANSES</button>
+        <button class="category-btn" onclick="showTramites('arca')">ARCA (Ex-AFIP)</button>
+        <button class="category-btn" onclick="showTramites('migraciones')">MIGRACIONES</button>
+        <button class="category-btn" onclick="showTramites('automotor')">GESTORIA AUTOMOTOR</button>
+    </div>
+
+    <div id="anses" class="submenu">
+        <h2>Trámites ANSES</h2>
+        <ul class="list-tramites">
+            <li>Jubilaciones y Pensiones</li>
+            <li>Asignación Universal por Hijo (AUH)</li>
+            <li>Créditos ANSES</li>
+            <li>Certificación Negativa</li>
+            <li>Actualización de Datos Personales (ADP)</li>
+        </ul>
+    </div>
+
+    <div id="arca" class="submenu">
+        <h2>Trámites ARCA</h2>
+        <ul class="list-tramites">
+            <li>Alta de Monotributo / Autónomos</li>
+            <li>Clave Fiscal (Nivel 3)</li>
+            <li>Declaraciones Juradas</li>
+            <li>Planes de Facilidades de Pago</li>
+            <li>Inscripciones impositivas</li>
+        </ul>
+    </div>
+
+    <div id="migraciones" class="submenu">
+        <h2>Trámites MIGRACIONES</h2>
+        <ul class="list-tramites">
+            <li>Residencias Temporarias / Permanentes</li>
+            <li>Certificado de Antecedentes Penales</li>
+            <li>Prórroga de Permanencia</li>
+            <li>Certificado de Residencia Precaria</li>
+            <li>DNI para Extranjeros</li>
+        </ul>
+    </div>
+
+    <div id="automotor" class="submenu">
+        <h2>Trámites GESTORIA AUTOMOTOR</h2>
+        <ul class="list-tramites">
+            <li>Transferencias (08 Digital)</li>
+            <li>Informes de Dominio e Infracciones</li>
+            <li>Cédulas Azul y Rosa</li>
+            <li>Denuncia de Venta</li>
+            <li>Baja por Robo o Siniestro</li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2026 GESTORIA JURIDICA- ADMINISTRATIVA - Todos los derechos reservados.
+    </footer>
+
+    <script>
+        function showTramites(id) {
+            // Ocultar todos los submenús
+            const submenus = document.querySelectorAll('.submenu');
+            submenus.forEach(menu => menu.style.display = 'none');
+            
+            // Quitar clase activa de todos los botones
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar el seleccionado
+            document.getElementById(id).style.display = 'block';
+            
+            // Marcar botón como activo
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
